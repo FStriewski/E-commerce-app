@@ -16,7 +16,8 @@ const initialState = [
   }
 ]
 
-export default function (state = initialState , action = {}) {
+// products.js
+export default function (state = initialState, action) {
   switch (action.type) {
     default:
       return state
