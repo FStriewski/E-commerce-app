@@ -2,7 +2,23 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import ProductDetails from './ProductDetails'
 
-import {connect} from 'react-redux'
+const products = [
+  {
+    id: 1,
+    name: 'Handbag',
+    price: 1450
+  },
+  {
+    id: 5,
+    name: 'Heater',
+    price: 550
+  },
+  {
+    id: 7,
+    name: 'T-shirt',
+    price: 10
+  }
+]
 
 class ProductsList extends PureComponent {
   static propTypes = {
@@ -40,10 +56,4 @@ class ProductsList extends PureComponent {
   }
 }
 
-const mapStateToProps = function (state) {
-  return {
-    products: state.products
-  }
-}
-
-export default connect(mapStateToProps)(ProductsList)
+export default ProductsList
