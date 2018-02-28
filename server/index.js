@@ -37,7 +37,7 @@ const Product = sequelize.define('product', {
 
 app.get('/products', (req, res) => {
   const products = Product
-  .findAll({attributes: ['id', 'name', 'price']})
+  .findAll()
   .then(products => {
     if(products){
       res.json(products)
@@ -51,11 +51,12 @@ app.get('/products', (req, res) => {
     res.status(500)
     res.json({message: "There was an error"})
   })
+})
 
 
   app.get('/products/:id', (req, res) => {
     const products = Product
-    .findById({attributes: ['id', 'name', 'price']})
+    .findById(req.params.id)
     .then(products => {
       if(products){
         res.json(products)
@@ -69,3 +70,4 @@ app.get('/products', (req, res) => {
       res.status(500)
       res.json({message: "There was an error"})
     })
+  })
