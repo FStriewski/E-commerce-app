@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {fetchProduct} from '../actions/fetchProduct'
 
 class ProductDetails extends PureComponent {
   static propTypes = {
@@ -12,8 +13,13 @@ class ProductDetails extends PureComponent {
     })).isRequired
   }
 
+  componentWillMount(props) {
+    this.props.fetchProduct(this.props.match.params.id)
+  }
+
   render() {
     const {product} = this.props
+    if (!product) return null
 
     let image = null;
     if (product.image) {
@@ -34,8 +40,9 @@ class ProductDetails extends PureComponent {
 
 const mapStateToProps = function (state, props) {
   return {
-    product: state.products.find(p => p.id === Number(props.match.params.id))
+    product: state.product
   }
 }
 
-export default connect(mapStateToProps)(ProductDetails)
+
+export default connect(mapStateToProps, { fetchProduct })(ProductDetails)

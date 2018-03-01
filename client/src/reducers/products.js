@@ -1,24 +1,11 @@
-let initialState = [
-  {
-    id: 1,
-    name: 'Handbag',
-    price: 1450
-  },
-  {
-    id: 5,
-    name: 'Heater',
-    price: 550
-  },
-  {
-    id: 7,
-    name: 'T-shirt',
-    price: 10
-  }
-]
+import {FETCHED_ALL_PRODUCTS} from '../actions/fetchProduct'
 
-// products.js
-export default function (state = initialState, action) {
+
+export default function (state = [], action) {
   switch (action.type) {
+    case FETCHED_ALL_PRODUCTS:
+      return action.payload
+
     default:
       return state
   }
