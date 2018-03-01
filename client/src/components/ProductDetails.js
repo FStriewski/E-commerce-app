@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 
 class ProductDetails extends PureComponent {
   static propTypes = {
@@ -13,10 +14,10 @@ class ProductDetails extends PureComponent {
 
   render() {
     const {product} = this.props
-    
+
     let image = null;
     if (product.image) {
-      image = <img />
+      image = <img alt="productimage"/>
     }
 
     return (
@@ -31,4 +32,10 @@ class ProductDetails extends PureComponent {
   }
 }
 
-export default ProductDetails
+const mapStateToProps = function (state, props) {
+  return {
+    product: state.products.find(p => p.id === Number(props.match.params.id))
+  }
+}
+
+export default connect(mapStateToProps)(ProductDetails)

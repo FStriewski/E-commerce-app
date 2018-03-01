@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ProductsList from './components/ProductsList'
 import ProductDetails from './components/ProductDetails'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 
-const products = [
-  {
-    id: 1,
-    name: 'Handbag',
-    price: 1450
-  },
-  {
-    id: 5,
-    name: 'Heater',
-    price: 550
-  }
-]
 
-export default class App extends Component {
+export default  class App extends Component {
   render() {
     return (
-      <div>
-        <ProductsList products={ products } />
-        <ProductDetails product={ products[0] } />
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/products" component={ProductsList} />
+          <Route exact path="/products/:id" component={ProductDetails} />
+          <Route exact path="/" render={ () => <Redirect to="/products" /> } />
+        </div>
+      </Router>
     )
   }
 }

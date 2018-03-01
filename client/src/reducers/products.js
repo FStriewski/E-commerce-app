@@ -1,4 +1,4 @@
-const initialState = [
+let initialState = [
   {
     id: 1,
     name: 'Handbag',
