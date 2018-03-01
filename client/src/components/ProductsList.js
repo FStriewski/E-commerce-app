@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/fetchProduct'
 import {Link} from 'react-router-dom'
 
+
 class ProductsList extends PureComponent {
   static propTypes = {
     products: PropTypes.arrayOf(PropTypes.shape({

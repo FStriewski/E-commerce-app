@@ -1,10 +1,12 @@
 const express = require('express')
-const app = express()
+const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
 const cors = require('cors')
 const sequelize = new Sequelize('postgres://postgres:secret@localhost:5432/postgres')
+const app = express()
 
 app.use(cors())
+app.use(bodyParser.json())
 
 app.listen(4001, () => console.log('Express API listening on port 4001'))
 
@@ -68,3 +70,8 @@ app.get('/products', (req, res) => {
       res.json({message: "There was an error"})
     })
   })
+
+  app.post('/products', (req, res) => {
+  // ... get the JSON data from the body
+  // ... insert the new data into our database
+})
